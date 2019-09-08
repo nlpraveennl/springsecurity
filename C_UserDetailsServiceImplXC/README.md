@@ -1,4 +1,8 @@
-Implement UserDetailService and Override loadUserByUsername method
+#Custom User Details service
+
+Implement UserDetailService and Override loadUserByUsername method.
+
+And configure spring-security.xml with UserDetailService reference as Authentication provider.
 
 ```xml
 <authentication-manager>
