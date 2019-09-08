@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="login" template="/WEB-INF/jsp/login.jsp">
+	</definition>
+	
+	<definition name="base.definition"
+		template="/WEB-INF/jsp/skeleton/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/skeleton/header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/jsp/skeleton/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/skeleton/footer.jsp" />
+	</definition>
+	
+	<definition name="dashboard" extends="base.definition">
+		<put-attribute name="title" value="Dashboard" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/dashboard.jsp" />
+	</definition>
+	
+	<definition name="user-form" extends="base.definition">
+		<put-attribute name="title" value="Add User" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/user-form.jsp" />
+	</definition>
+	
+	<definition name="app-config" extends="base.definition">
+		<put-attribute name="title" value="Configuration" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/app-config.jsp" />
+	</definition>
+	
+	<definition name="403" extends="base.definition">
+		<put-attribute name="title" value="Access denied" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/403.jsp" />
+	</definition>
+	
+	<definition name="user-list" extends="base.definition">
+		<put-attribute name="title" value="User List" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/user-list.jsp" />
+	</definition>
+
+</tiles-definitions>

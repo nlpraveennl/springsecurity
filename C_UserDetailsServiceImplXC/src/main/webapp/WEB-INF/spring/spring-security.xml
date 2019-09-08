@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"  
+    xmlns:beans="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">  
+
+	<http auto-config="true" use-expressions="true" create-session="ifRequired">
+		<csrf disabled="true"/>
+		
+		<intercept-url pattern="/resources/**" access="permitAll" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/api/**" access="permitAll" />
+		
+		<intercept-url pattern="/config/*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/app/admin/*" access="hasRole('ROLE_ADMIN')" />
+		
+		<intercept-url pattern="/app/user/*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		
+		<access-denied-handler error-page="/403" />
+		
+		<form-login 
+		    login-page="/login" 
+		    default-target-url="/app/user/dashboard" 
+			authentication-failure-url="/login?error=true" 
+			username-parameter="userName"
+			password-parameter="password" />
+		
+		<logout invalidate-session="false" success-handler-ref="customLogoutSuccessHandler"/>
+			
+		<session-management invalid-session-url="/login?expired=true">
+			<concurrency-control max-sessions="1" />
+		</session-management>
+		
+	</http>
+	
+
+	<authentication-manager>
+		<authentication-provider>
+	        <user-service>
+	            <user name="restapiuser" password="{bcrypt}$2a$10$GRoNCbeVoBYMcZH7QLX2O.wWxkMtB4qiBY8y.XzvRN/mvktS9GWc6" authorities="ROLE_APIUSER" />
+	        </user-service>
+	    </authentication-provider>
+	    <authentication-provider user-service-ref="userDaoImpl">
+	    	<password-encoder ref="encoder"/>
+	    </authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<beans:bean id="customLogoutSuccessHandler" class="com.pvn.mvctiles.configuration.CustomLogoutSuccessHandler" />
+	
+		
+</beans:beans>

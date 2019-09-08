@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"  
+    xmlns:beans="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<http auto-config="true" use-expressions="true" create-session="ifRequired">
+		<csrf disabled="true"/>
+		
+		<intercept-url pattern="/resources/**" access="permitAll" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/api/**" access="permitAll" />
+		
+		<intercept-url pattern="/app/admin/*" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/app/user/*" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+		
+		<access-denied-handler error-page="/403" />
+		
+		<form-login 
+		    login-page="/login" 
+		    default-target-url="/app/user/dashboard" 
+			authentication-failure-url="/login?error=true" 
+			username-parameter="userName"
+			password-parameter="password" />
+		
+   <!-- Modified/Added CustomLogoutSuccessHandler to display session expired message -->
+   <!-- <logout logout-success-url="/login?logout=true"  invalidate-session="false" delete-cookies="JSESSIONID"/> -->
+		<logout invalidate-session="false" success-handler-ref="customLogoutSuccessHandler"/>
+			
+		<session-management invalid-session-url="/login?expired=true">
+			<concurrency-control max-sessions="1" />
+		</session-management>
+		
+	</http>
+	
+
+	<authentication-manager>
+	    <authentication-provider>
+	        <user-service>
+	            <user name="admin" password="{bcrypt}$2a$10$qJTqy02X2rxhDsaQVjmGvuH5An4zaeGl38s9Ro/XqgcNvm0N464fi" authorities="ROLE_ADMIN" />
+	        </user-service>
+	    </authentication-provider>
+	    <authentication-provider>
+		  	<password-encoder ref="encoder" /> 
+			<jdbc-user-service data-source-ref="dataSource"
+			  users-by-username-query=
+			    "select username, password, enabled from userdetails where userName=?"
+			  authorities-by-username-query=
+			    "select ud.username as username, rm.name as role from userdetails ud INNER JOIN rolemaster rm ON rm.id = ud.roleId  where username = ?" />
+		 </authentication-provider>
+	</authentication-manager>
+	
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		 <beans:property name="driverClassName" value="${driver}"/>
+		 <beans:property name="url" value="${url}"/>
+		 <beans:property name="username" value="${db.username}"/>
+		 <beans:property name="password" value="${password}"/>
+		 <beans:property name="initialSize" value="${initialSize}" />
+		 <beans:property name="maxActive" value="${maxActive}" />
+	</beans:bean>
+	
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations" value="classpath:databaseconnection.properties" />
+	</beans:bean>
+	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<beans:bean id="customLogoutSuccessHandler" class="com.pvn.mvctiles.configuration.CustomLogoutSuccessHandler" />
+</beans:beans>
