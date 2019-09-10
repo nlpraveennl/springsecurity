@@ -69,27 +69,32 @@
 						<p style="font-variant-caps: all-petite-caps;"><spring:message code="app.login.loginhere.label"/></p>
 					</div>
 					<div class="login-form-body">
-						  <div class="form-group">
-						  	<div class="col-sm-12" style="font-variant-caps: all-petite-caps;">
-						   		<spring:message code="app.login.username.label"/>
-						   	</div>
-						    <div class="col-sm-12">
-						      <form:input path="userName" type="text" id="username" placeholder="${usernameLabel}" style="width:100%"/>
-						    </div>
-						  </div>
-						  <div class="form-group" style="font-variant-caps: all-petite-caps;">
-						  	<div class="col-sm-12">
-						    	<spring:message code="app.login.password.label"/>
-						    </div>
-						    <div class="col-sm-12">
-						      <form:password path="password" id="password" placeholder="${passwordLabel}" style="width:100%"/>
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <div class="col-sm-offset-2 col-sm-10">
-						      <button type="submit" class="btn btn-default" style="font-variant-caps: all-petite-caps;"><spring:message code="app.login.signin.label"/></button>
-						    </div>
-						  </div>
+					  <div class="form-group">
+					  	<div class="col-sm-12" style="font-variant-caps: all-petite-caps;">
+					   		<spring:message code="app.login.username.label"/>
+					   	</div>
+					    <div class="col-sm-12">
+					      <form:input path="userName" type="text" id="username" placeholder="${usernameLabel}" style="width:100%"/>
+					    </div>
+					  </div>
+					  <div class="form-group" style="font-variant-caps: all-petite-caps;">
+					  	<div class="col-sm-12">
+					    	<spring:message code="app.login.password.label"/>
+					    </div>
+					    <div class="col-sm-12">
+					      <form:password path="password" id="password" placeholder="${passwordLabel}" style="width:100%"/>
+					    </div>
+					  </div>
+					  <div class="col-sm-12">
+					     <b>User Type:</b><br>
+					      User &nbsp; <form:radiobutton path="userType" value="user"/>
+					      Admin &nbsp; <form:radiobutton path="userType" value="admin"/>
+					  </div><br>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default" style="font-variant-caps: all-petite-caps;"><spring:message code="app.login.signin.label"/></button>
+					    </div>
+					  </div>
 					</div>
 				</div>
 				<c:if test="${not empty error}">

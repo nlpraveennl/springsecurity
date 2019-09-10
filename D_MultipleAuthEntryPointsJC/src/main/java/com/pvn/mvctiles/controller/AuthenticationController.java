@@ -1,7 +1,5 @@
 package com.pvn.mvctiles.controller;
 
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -17,12 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pvn.mvctiles.model.DbUserDetails;
-import com.pvn.mvctiles.service.UserService;
-import com.pvn.mvctiles.validators.UserValidator;
+import com.pvn.mvctiles.vo.LoginForm;
 
 @Controller
 public class AuthenticationController
@@ -31,40 +26,26 @@ public class AuthenticationController
 	Logger			OUT	= LoggerFactory.getLogger(AuthenticationController.class);
 
 	@Autowired
-	UserValidator	validator;
-
-	@Autowired
 	MessageSource	messageSource;
 
-	@Autowired
-	UserService		userService;
-	
-	@Autowired
-	LocaleResolver localeResolver;
-
 	@RequestMapping(value = { "/login", "/" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView login(ModelAndView model, @ModelAttribute("login") DbUserDetails userDetails, BindingResult result,
+	public ModelAndView login(ModelAndView model, @ModelAttribute("login") LoginForm loginForm, BindingResult result,
 			@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout,
 			@RequestParam(value = "expired", required = false) String expired,HttpServletRequest request)
 	{
-		Locale locale = localeResolver.resolveLocale(request);
-		
 		if (error != null)
 		{
-			OUT.info("Invalid username and password!");
-			model.addObject("error", messageSource.getMessage("app.login.invalid.credntials", null, "Invalid credentials", locale));
+			model.addObject("error", "Invalid credentials");
 		}
 
 		if (logout != null)
 		{
-			OUT.info("You've been logged out successfully.");
-			model.addObject("msg", messageSource.getMessage("app.login.logout.success", null, "Logout success", locale));
+			model.addObject("msg", "Logout success");
 		}
 		
 		if (expired != null)
 		{
-			OUT.info("Session has been expired.");
-			model.addObject("msg", messageSource.getMessage("app.login.session.expired", null, "Sesion Expired", locale));
+			model.addObject("msg", "Sesion Expired");
 		}
 
 		model.setViewName("login");
@@ -75,11 +56,9 @@ public class AuthenticationController
 	public String showDashboard(Model model, HttpServletRequest request)
 	{
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		DbUserDetails user = new DbUserDetails();
-		user.setUserName(((String)principal));
 		
-		model.addAttribute("loggedInUser", user);
-		request.getSession(false).setAttribute("loggedInUser", user);
+		model.addAttribute("loggedInUser", (String)principal);
+		request.getSession(false).setAttribute("loggedInUser", (String)principal);
 		return "dashboard";
 	}
 	
@@ -87,6 +66,12 @@ public class AuthenticationController
 	public String accessDenied(Model model, HttpServletRequest request)
 	{
 		return "403";
+	}
+	
+	@RequestMapping("app/admin/app-config")
+	public String appConfig(Model model, HttpServletRequest request)
+	{
+		return "admin/app-config";
 	}
 	
 	@RequestMapping("/keepSessionAlive")

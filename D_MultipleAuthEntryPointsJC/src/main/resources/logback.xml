@@ -37,9 +37,9 @@
 	<!-- <logger name="org.springframework" level="INFO">
 		<appender-ref ref="STDOUT" />
 	</logger>
-	
+	 -->
 	<logger name="org.apache.tiles" level="INFO">
 		<appender-ref ref="STDOUT" />
-	</logger> -->
+	</logger>
 	
 </configuration>

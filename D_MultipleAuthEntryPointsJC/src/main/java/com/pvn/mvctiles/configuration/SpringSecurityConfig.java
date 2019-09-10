@@ -11,6 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.pvn.mvctiles.authentication.UserCustomAuthenticationProvider;
+import com.pvn.mvctiles.authentication.AdminCustomAuthenticationProvider;
+import com.pvn.mvctiles.authentication.CustomAuthenticationFailureHandler;
+import com.pvn.mvctiles.authentication.CustomAuthenticationSuccessHandler;
+import com.pvn.mvctiles.authentication.MyAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -20,17 +28,43 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 	DataSource dataSource;
 	
 	@Autowired
-	private CustomAuthenticationProvider customAuthenticationProvider;
-		
+	private AdminCustomAuthenticationProvider adminCustomAuthenticationProvider;
+	
+	@Autowired
+	private UserCustomAuthenticationProvider userCustomAuthenticationProvider;
+	
+	@Autowired
+	private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	
+	@Autowired
+	private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+	
 	@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(customAuthenticationProvider);
-    }
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception
+	{
+		auth.authenticationProvider(adminCustomAuthenticationProvider);
+		auth.authenticationProvider(userCustomAuthenticationProvider);
+	}
+	
+	@Bean
+	public MyAuthenticationFilter myAuthenticationFilter() throws Exception
+	{
+		MyAuthenticationFilter authenticationFilter = new MyAuthenticationFilter();
+
+		authenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
+		authenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+		authenticationFilter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/login", "POST"));
+		authenticationFilter.setAuthenticationManager(authenticationManagerBean());
+
+		return authenticationFilter;
+	}
  
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception
 	{
-        http.csrf().disable()
+        http
+        .addFilterBefore(myAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+        .csrf().disable()
         .authorizeRequests()
 	        .antMatchers("/resources/**", "/", "/login")
 	        	.permitAll()
@@ -42,15 +76,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 	        	.hasRole("APIUSER")
         .and().exceptionHandling()
         	.accessDeniedPage("/403")
-        .and().formLogin()
-            .loginPage("/login")
-            .usernameParameter("userName").passwordParameter("password")
-            .defaultSuccessUrl("/app/user/dashboard")
-            .failureUrl("/login?error=true")
         .and().logout()
             .logoutSuccessHandler(new CustomLogoutSuccessHandler())
-            .invalidateHttpSession(true)
-		.and().httpBasic();
+            .invalidateHttpSession(true);
         
         http.sessionManagement().maximumSessions(1).expiredUrl("/login?expired=true");
     }
