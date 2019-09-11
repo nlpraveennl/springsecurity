@@ -20,3 +20,4 @@ public class AdminUsernamePasswordAuthenticationToken extends UsernamePasswordAu
 		super(principal, credentials, authorities);
 	}
 }
+

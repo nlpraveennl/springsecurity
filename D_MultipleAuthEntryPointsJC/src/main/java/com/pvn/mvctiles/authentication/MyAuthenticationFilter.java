@@ -15,19 +15,19 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException
 	{
-		UsernamePasswordAuthenticationToken authRequest = null;
+		UsernamePasswordAuthenticationToken authToken = null;
 
 	    if ("user".equals(request.getParameter("userType"))) 
 	    {
-	        authRequest = new UserUsernamePasswordAuthenticationToken(request.getParameter("userName"), request.getParameter("password"));
+	        authToken = new UserUsernamePasswordAuthenticationToken(request.getParameter("userName"), request.getParameter("password"));
 	    }
 	    else 
 	    {
-	        authRequest = new AdminUsernamePasswordAuthenticationToken(request.getParameter("userName"), request.getParameter("password"));
+	        authToken = new AdminUsernamePasswordAuthenticationToken(request.getParameter("userName"), request.getParameter("password"));
 	    }
 
-	    setDetails(request, authRequest);
+	    setDetails(request, authToken);
 
-	    return super.getAuthenticationManager().authenticate(authRequest);
+	    return super.getAuthenticationManager().authenticate(authToken);
 	}
 }

@@ -20,7 +20,7 @@ public class UserCustomAuthenticationProvider implements AuthenticationProvider
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
 
-		if (username.equals("vedanta") && password.equals("vedanta@123#"))
+		if (username.equals("user") && password.equals("user@123#"))
 		{
 			List<GrantedAuthority> authorityList = new ArrayList<>();
 			GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");

@@ -19,7 +19,7 @@ public class AdminCustomAuthenticationProvider implements AuthenticationProvider
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
 
-		if (username.equals("praveen") && password.equals("praveen@123#"))
+		if (username.equals("admin") && password.equals("admin@123#"))
 		{
 			List<GrantedAuthority> authorityList = new ArrayList<>();
 			GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_ADMIN");
