@@ -1,7 +1,6 @@
 # Fall Back authentication.
 
-Here i have configured both in memory and jdbc authentication with default UserDetailService. During authentication if in memory 
-authentication failed then jdbc authentication will be carried out, this is often referred as Fall Back authentication.
+Here i have configured both in memory and jdbc authentication with default UserDetailService. In this example, during authentication if in memory authentication failed then jdbc authentication will be performed, this is often referred as Fall Back authentication.
 
 
 ```java
