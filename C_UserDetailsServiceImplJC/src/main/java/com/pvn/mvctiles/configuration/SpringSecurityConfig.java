@@ -19,15 +19,17 @@ import com.pvn.mvctiles.dao.impl.UserDaoImpl;
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter 
 {
 	@Autowired
-	UserDaoImpl userDaoImpl;
+	private UserDaoImpl userDaoImpl;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	public void configureInMemoryAuthentication(AuthenticationManagerBuilder auth) throws Exception
 	{
 		auth.inMemoryAuthentication()
 		.withUser("restapiuser")
-		.password("$2a$10$GRoNCbeVoBYMcZH7QLX2O.wWxkMtB4qiBY8y.XzvRN/mvktS9GWc6")
+		.password(passwordEncoder.encode("restapiuser@123#"))
 		.roles("APIUSER");
 	}
 
@@ -72,5 +74,4 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
     {
         return new BCryptPasswordEncoder();
     }
-    
 }

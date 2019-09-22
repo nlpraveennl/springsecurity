@@ -1,0 +1,29 @@
+.header
+{
+	background: dimgrey;
+	color:white;
+}
+.logout-label
+{
+	color:white;
+}
+
+.sidebar
+{
+	border-right: gray 1px solid;
+	padding-right: 0px;
+  		padding-left: 0px;
+  		background-color: slategrey;
+  		font-variant-caps: petite-caps;
+  	  	font-family: initial;
+}
+.menu-item
+{
+    padding: 10px;
+    color: white;
+    border-bottom: 1px solid darkgray;
+}
+.menu-item:hover
+{
+	cursor: pointer;
+}
