@@ -83,4 +83,10 @@ public class AuthenticationController
 	{
 		return "session refreshed successfully";
 	}
+	
+	@RequestMapping("/sales")
+	public @ResponseBody String sales(Model model, HttpServletRequest request)
+	{
+		return "session refreshed successfully";
+	}
 }

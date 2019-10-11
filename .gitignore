@@ -13,6 +13,12 @@
 bin/**
 tmp/**
 tmp/**/*
+Servers/**
+Servers/**/*
+F_ACL/**
+F_ACL/**/*
+F_ACL2/**
+F_ACL2/**/*
 *.tmp
 *.bak
 *.swp

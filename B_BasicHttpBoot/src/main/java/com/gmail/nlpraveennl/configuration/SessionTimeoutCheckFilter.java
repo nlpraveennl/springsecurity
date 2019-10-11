@@ -50,5 +50,4 @@ public class SessionTimeoutCheckFilter implements Filter
 			resp.getWriter().print(-1);
 		}
 	}
-
 }
