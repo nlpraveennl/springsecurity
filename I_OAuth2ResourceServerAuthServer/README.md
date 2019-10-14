@@ -1,19 +1,15 @@
-Oauth2 is all about securing your API's. it has mainly 4 parts. Lets take exapmle of facebook
-
-1. Authorization Server [Facebook]
-
-2. Resource server [Facebook and resource will be your profile]
-
-3. Client [Stack overflow, Quora, Candy crush, Subway Surfer etc]
-
-4. Resource owner [You (If Authenticated)]
+Oauth2 is all about securing your API's. it has mainly 4 parts. Lets take exapmle of facebook<br>
+1. Authorization Server [Facebook]<br>
+2. Resource server [Facebook and resource will be your profile]<br>
+3. Client [Stack overflow, Quora, Candy crush, Subway Surfer etc]<br>
+4. Resource owner [You (If Authenticated)]<br>
 
 Resource server may consists of both secured and unsecured API's. For accessing secured API's Client need access_token which is issued by Authorization server. access_token issued is a random string and is also stored in authorization server database along with the associated user, scope(read, read_profile_info, write).
 
 Here Resource owner(You) giving consent to the Authorization server to grant a access_token of scope('read','read-profile',`post-to-my-timeline` etc) to the Client(`Quora`,`StackOverflow`,`Candy-Crush` etc)
 
 Advantage of oauth2.0<br>
-1. access_token received will have authentication and authorization both. So it will be helpful to provide specific scope to access_token.
+1. access_token received will have authentication and authorization both. So it will be helpful to provide specific scope to access_token.<br>
    (Say stack overflow accesses basic profile info, candy crush accesses more information including scope of posting on behalf of you)
 2. life span of access_token, grant_type of refresh_token.<br>
    Access tokens have limited lifetimes. If client application needs access to Resource beyond the lifetime of a single access token, it can obtain a refresh token. A refresh token allows client application to obtain new access tokens.<br>
