@@ -1,11 +1,14 @@
 package com.pvn.mvctiles.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pvn.mvctiles.dao.UserDao;
@@ -22,6 +25,9 @@ public class UserServiceImpl implements UserService
 
 	@Autowired
 	UserDao	userDao;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@Override
 	public UserDetails addUser(UserDetails userDetails)
@@ -34,7 +40,7 @@ public class UserServiceImpl implements UserService
 			userDetails.getRoleList().add(mapping);
 		});
 		
-		String encodedPass = new BCryptPasswordEncoder().encode(userDetails.getPassword());
+		String encodedPass = passwordEncoder.encode(userDetails.getPassword());
 		OUT.info("Plain Pass: {}, Encoded Pass: {}", userDetails.getPassword(), encodedPass);
 		
 		userDetails.setPassword(encodedPass);
@@ -46,15 +52,42 @@ public class UserServiceImpl implements UserService
 	@Override
 	public UserDetails modifyUser(UserDetails userDetails)
 	{
-		userDetails.getSelectedRoles().forEach(roleId -> {
-			UserRoleMapping mapping = new UserRoleMapping();
-			mapping.setId(roleId);
-			mapping.setUserId(userDetails.getId());
+		String[] arr = userDetails.getPreviousMappings().split(",");
+		Map<Integer, UserRoleMapping> roleIdObjMap = new HashMap<>();
+		UserRoleMapping urMapping = null;
+		String[] arr2 = null;
+		
+		for (String string : arr)
+		{
+			System.out.println("AA-"+string);
 			
-			userDetails.getRoleList().add(mapping);
+			urMapping = new UserRoleMapping();
+			arr2 = string.split(":");
+			urMapping.setId(Integer.parseInt(arr2[0]));
+			urMapping.setUserId(Integer.parseInt(arr2[1]));
+			urMapping.setRoleId(Integer.parseInt(arr2[2]));
+			System.out.println(urMapping.getUserId());
+			roleIdObjMap.put(urMapping.getRoleId(), urMapping);
+		}
+		
+		userDetails.setRoleList(new ArrayList<>());
+		
+		userDetails.getSelectedRoles().forEach(roleId -> 
+		{
+			if(roleIdObjMap.containsKey(roleId))
+			{
+				userDetails.getRoleList().add(roleIdObjMap.get(roleId));	
+			}
+			else
+			{
+				UserRoleMapping urMap = new UserRoleMapping();
+				urMap.setRoleId(roleId);
+				urMap.setUserId(userDetails.getId());
+				userDetails.getRoleList().add(urMap);
+			}
 		});
 		
-		String encodedPass = new BCryptPasswordEncoder().encode(userDetails.getPassword());
+		String encodedPass = passwordEncoder.encode(userDetails.getPassword());
 		OUT.info("Plain Pass: {}, Encoded Pass: {}", userDetails.getPassword(), encodedPass);
 		userDetails.setPassword(encodedPass);
 
@@ -83,10 +116,14 @@ public class UserServiceImpl implements UserService
 	public UserDetails getUser(int userId)
 	{
 		UserDetails user = userDao.getUser(userId);
+		List<String> list = new ArrayList<>();
 		
 		user.getRoleList().forEach(mapping -> {
 			user.getSelectedRoles().add(mapping.getRoleId());
+			list.add(mapping.toString());
 		});
+		
+		user.setPreviousMappings(String.join(",", list));
 		
 		return user;
 	}

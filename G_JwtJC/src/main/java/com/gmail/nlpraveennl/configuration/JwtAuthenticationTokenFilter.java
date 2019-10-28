@@ -41,6 +41,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter
 				String username = jwtTokenUtil.getUsernameFromToken(authToken);
 				if (username != null && SecurityContextHolder.getContext().getAuthentication() == null)
 				{
+					// here username should be validated with database and get authorities from database if valid
+					// Say just to hard code
 					if (jwtTokenUtil.validateToken(authToken, username))
 					{
 						List<GrantedAuthority> authList = new ArrayList<>();

@@ -72,8 +72,10 @@
 </body>
 <script>
 var sessionCheckIntervalInSec = 10;
-var timerToDisplay = sessionCheckIntervalInSec * 2; // Display timer if remaining sesssion time lies between 10 sec to 20 sec; 
+var timerToDisplay = sessionCheckIntervalInSec * 2; // Display timer if remaining sesssion time lies between 10 sec to 20 sec;
+
 var sessionCheckIntervalId = setInterval(doAjaxCall, sessionCheckIntervalInSec * 1000);
+
 var timerDisplayIntervalId;
 var timerShown = false;
 

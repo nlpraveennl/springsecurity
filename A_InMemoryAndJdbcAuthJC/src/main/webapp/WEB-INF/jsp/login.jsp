@@ -62,6 +62,7 @@
 	</head>
 	
 	<body>
+		<div style="display:none">LOGIN_PAGE_IDENTIFIER</div>
 		<div class="container-fluid">
 			<form:form method="post" action="login" class="form-horizontal" modelAttribute="login"  onsubmit="return validate(this);">
 				<div class="login-form-container col-md-4 offset-md-4">

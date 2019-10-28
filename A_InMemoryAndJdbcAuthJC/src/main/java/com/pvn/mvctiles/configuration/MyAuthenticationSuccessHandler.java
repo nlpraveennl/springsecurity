@@ -27,7 +27,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         }
         else
         {
-        	request.getSession(false).setMaxInactiveInterval(120);
+        	request.getSession(false).setMaxInactiveInterval(50);
         }
         
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

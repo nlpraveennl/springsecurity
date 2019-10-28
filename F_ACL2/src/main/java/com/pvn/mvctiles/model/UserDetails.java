@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,12 +31,15 @@ public class UserDetails implements Serializable
 	private String	gender;
 	private boolean	enabled;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", updatable = false)
 	private List<UserRoleMapping> roleList;
 	
 	@Transient
 	private List<Integer> selectedRoles = new ArrayList<>();
+	
+	@Transient
+	private String previousMappings;
 	
 	public UserDetails()
 	{}
@@ -149,7 +151,16 @@ public class UserDetails implements Serializable
 	{
 		this.selectedRoles = selectedRoles;
 	}
-
+	
+	public String getPreviousMappings()
+	{
+		return previousMappings;
+	}
+	
+	public void setPreviousMappings(String previousMappings)
+	{
+		this.previousMappings = previousMappings;
+	}
 
 	@Override
 	public String toString()

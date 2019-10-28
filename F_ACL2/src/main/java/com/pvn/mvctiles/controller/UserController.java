@@ -56,12 +56,13 @@ public class UserController
 	@RequestMapping("/app/admin/modify-user")
 	public String modifyUser(Model model, @ModelAttribute("user") UserDetails userDetails, HttpServletRequest request)
 	{
+		System.out.println(userDetails.getPreviousMappings());
 		UserDetails user = userService.modifyUser(userDetails);
 		
-		model.addAttribute("msg", "User "+user.getFirstName()+" added successfully");
+		model.addAttribute("msg", "User "+user.getFirstName()+" modified successfully");
 		model.addAttribute("roleList", roleService.getAll());
 		
-		return "user-details";
+		return "redirect:/app/admin/user-details/"+userDetails.getId();
 	}
 	
 	@RequestMapping("/app/admin/list-user")

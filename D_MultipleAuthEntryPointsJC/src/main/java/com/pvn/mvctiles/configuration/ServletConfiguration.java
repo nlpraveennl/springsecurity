@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -39,5 +40,12 @@ public class ServletConfiguration implements WebMvcConfigurer
 	public void addResourceHandlers(ResourceHandlerRegistry registry)
 	{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
+	
+	@Override
+	public void addCorsMappings(CorsRegistry registry)
+	{
+		registry.addMapping("/**")
+        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH").allowedOrigins("https://stackoverflow.com");
 	}
 }

@@ -50,4 +50,18 @@ public class UserRoleMapping implements Serializable
 	{
 		this.roleId = roleId;
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append(id);
+		builder.append(":");
+		builder.append(userId);
+		builder.append(":");
+		builder.append(roleId);
+		return builder.toString();
+	}
+	
+	
 }

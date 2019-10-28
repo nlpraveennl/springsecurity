@@ -58,6 +58,11 @@ public class UserDaoImpl implements UserDao
 			tx = session.getTransaction();
 			tx.begin();
 			session.update(userDetails);
+			userDetails.getRoleList().forEach(roleMapping -> 
+			{
+				System.out.println("ZZ"+roleMapping);
+				session.saveOrUpdate(roleMapping);
+			});
 			tx.commit();
 			return userDetails;
 		}

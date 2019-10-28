@@ -66,12 +66,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		http
 			.authorizeRequests()
-				.antMatchers("/resources/**", "/", "/login", "/api/**")
-				.permitAll()
-				.antMatchers("/app/admin/*")
-					.hasRole("ADMIN")
-				.antMatchers("/app/user/*")
-					.hasAnyRole("ADMIN", "USER")
+				.antMatchers("/resources/**", "/", "/login", "/api/**").permitAll()
+//				.antMatchers("/app/admin/app-config").permitAll()
+				.antMatchers("/app/admin/**").hasRole("ADMIN")
+				.antMatchers("/app/user/**").hasAnyRole("ADMIN", "USER")
 			.and().exceptionHandling().accessDeniedPage("/403")
 			.and().formLogin()
 				.loginPage("/login").usernameParameter("userName")

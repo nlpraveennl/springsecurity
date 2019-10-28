@@ -67,7 +67,7 @@ public class JwtTokenUtil implements Serializable
 	public static void main(String[] args)
 	{
 		JwtTokenUtil tu = new JwtTokenUtil();
-		String s1 = tu.generateToken("hello");
+		String s1 = tu.generateToken("praveen");
 		System.out.println(s1);
 		String user = tu.getUsernameFromToken(s1);
 		System.out.println(user);

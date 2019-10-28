@@ -69,7 +69,7 @@
 		<hr>
 		<form:form method="post" action="${pageContext.request.contextPath}/app/admin/modify-user" modelAttribute="user">
 			<form:hidden path="id"/>
-			<form:hidden path="roleList"/>
+			<form:hidden path="previousMappings"/>
 			<table>
 				<tr>
 					<td style="width:200px">
