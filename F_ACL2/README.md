@@ -1,17 +1,17 @@
 
 # Requirement
 
-### Projects
-- Admin can read/add/modify any projects
+### Projects domain object
+- Admin can read/add/modify any projects. (Excemption a
 - Project manager of that project can read and edit projects for which they are manager.
 - No other users can read/write any project.
 
-### Issues and issue details
+### Issues and issue details domain object
 - Admin can read/modify any issues
 - Reporter,Assignee and project manager can read that issue
 - Admin and Assignee can edit issue
 
-### Issue comment
+### Issue comment donain object
 - Project manager, reporter and assignee can comment on issue.
 - Issue comment can only deleted by commentator(comment owner).
 
