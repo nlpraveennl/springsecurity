@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.4.1.js" />" ></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.bundle.min.js" />" ></script>
 	<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.css" />" >
-	<link rel="stylesheet" href="<spring:theme code='styleSheet'/>" type="text/css"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}<spring:theme code='styleSheet'/>" type="text/css"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title><tiles:insertAttribute name="title" ignore="true" /></title>
 	<style>

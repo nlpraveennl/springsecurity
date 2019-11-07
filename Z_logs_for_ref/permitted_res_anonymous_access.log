@@ -1,0 +1,130 @@
+TRACE - session destroyed 
+TRACE - Last access time update filter :: null :: http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/app/admin/app-config 
+DEBUG - /app/admin/app-config at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /app/admin/app-config at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - No HttpSession currently exists 
+DEBUG - No SecurityContext was available from the HttpSession: null. A new one will be created. 
+DEBUG - /app/admin/app-config at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /app/admin/app-config at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', POST] 
+DEBUG - Request 'GET /app/admin/app-config' doesn't match 'POST /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', PUT] 
+DEBUG - Request 'GET /app/admin/app-config' doesn't match 'PUT /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', DELETE] 
+DEBUG - Request 'GET /app/admin/app-config' doesn't match 'DELETE /logout' 
+DEBUG - No matches found 
+DEBUG - /app/admin/app-config at position 5 of 12 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter' 
+DEBUG - Request 'GET /app/admin/app-config' doesn't match 'POST /login' 
+DEBUG - /app/admin/app-config at position 6 of 12 in additional filter chain; firing Filter: 'ConcurrentSessionFilter' 
+DEBUG - /app/admin/app-config at position 7 of 12 in additional filter chain; firing Filter: 'RequestCacheAwareFilter' 
+DEBUG - saved request doesn't match 
+DEBUG - /app/admin/app-config at position 8 of 12 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter' 
+DEBUG - /app/admin/app-config at position 9 of 12 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter' 
+DEBUG - Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@aeef7b36: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS' 
+DEBUG - /app/admin/app-config at position 10 of 12 in additional filter chain; firing Filter: 'SessionManagementFilter' 
+DEBUG - Requested session ID F9E6CFBD4BC49E1DAB8CBA00964D0678 is invalid. 
+DEBUG - /app/admin/app-config at position 11 of 12 in additional filter chain; firing Filter: 'ExceptionTranslationFilter' 
+DEBUG - /app/admin/app-config at position 12 of 12 in additional filter chain; firing Filter: 'FilterSecurityInterceptor' 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/resources/**' 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/' 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/login' 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/api/**' 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/app/admin/**' 
+DEBUG - Secure object: FilterInvocation: URL: /app/admin/app-config; Attributes: [hasRole('ROLE_ADMIN')] 
+DEBUG - Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@aeef7b36: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS 
+DEBUG - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@4f3b7ba9, returned: -1 
+TRACE - Returning cached instance of singleton bean 'delegatingApplicationListener' 
+DEBUG - Access is denied (user is anonymous); redirecting to authentication entry point 
+org.springframework.security.access.AccessDeniedException: Access is denied
+	at org.springframework.security.access.vote.AffirmativeBased.decide(AffirmativeBased.java:84)
+	at org.springframework.security.access.intercept.AbstractSecurityInterceptor.beforeInvocation(AbstractSecurityInterceptor.java:233)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:124)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:155)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.pvn.mvctiles.configuration.SessionLastAccessTimeUpdateFilter.doFilter(SessionLastAccessTimeUpdateFilter.java:33)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:668)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:791)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+DEBUG - Trying to match using NegatedRequestMatcher [requestMatcher=Ant [pattern='/**/favicon.*']] 
+DEBUG - Checking match of request : '/app/admin/app-config'; against '/**/favicon.*' 
+DEBUG - matches = true 
+DEBUG - Trying to match using NegatedRequestMatcher [requestMatcher=MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.HeaderContentNegotiationStrategy@2a7e81e1, matchingMediaTypes=[application/json], useEquals=false, ignoredMediaTypes=[*/*]]] 
+DEBUG - httpRequestMediaTypes=[text/html, application/xhtml+xml, image/webp, image/apng, application/signed-exchange;v=b3, application/xml;q=0.9, */*;q=0.8] 
+DEBUG - Processing text/html 
+DEBUG - application/json .isCompatibleWith text/html = false 
+DEBUG - Processing application/xhtml+xml 
+DEBUG - application/json .isCompatibleWith application/xhtml+xml = false 
+DEBUG - Processing image/webp 
+DEBUG - application/json .isCompatibleWith image/webp = false 
+DEBUG - Processing image/apng 
+DEBUG - application/json .isCompatibleWith image/apng = false 
+DEBUG - Processing application/signed-exchange;v=b3 
+DEBUG - application/json .isCompatibleWith application/signed-exchange;v=b3 = false 
+DEBUG - Processing application/xml;q=0.9 
+DEBUG - application/json .isCompatibleWith application/xml;q=0.9 = false 
+DEBUG - Processing */*;q=0.8 
+DEBUG - Ignoring 
+DEBUG - Did not match any media types 
+DEBUG - matches = true 
+DEBUG - Trying to match using NegatedRequestMatcher [requestMatcher=RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]] 
+DEBUG - matches = true 
+DEBUG - All requestMatchers returned true 
+TRACE - session created 
+DEBUG - DefaultSavedRequest added to Session: DefaultSavedRequest[http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/app/admin/app-config] 
+DEBUG - Calling Authentication entry point. 
+DEBUG - Redirecting to 'http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/login' 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@1c31ce92 
+DEBUG - SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession. 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 
+TRACE - Last access time update filter :: org.apache.catalina.session.StandardSessionFacade@1498d333 :: http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/login 
+DEBUG - /login at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /login at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - HttpSession returned null object for SPRING_SECURITY_CONTEXT 

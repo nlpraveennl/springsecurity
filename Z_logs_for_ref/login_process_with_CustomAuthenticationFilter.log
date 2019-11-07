@@ -1,0 +1,27 @@
+TRACE - Last access time update filter :: null :: http://localhost:8080/multiple-entrypoints-jc/login 
+DEBUG - /login at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /login at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - No HttpSession currently exists 
+DEBUG - No SecurityContext was available from the HttpSession: null. A new one will be created. 
+DEBUG - /login at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /login at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+DEBUG - Request 'POST /login' doesn't match 'GET /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', POST] 
+DEBUG - Checking match of request : '/login'; against '/logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', PUT] 
+DEBUG - Request 'POST /login' doesn't match 'PUT /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', DELETE] 
+DEBUG - Request 'POST /login' doesn't match 'DELETE /logout' 
+DEBUG - No matches found 
+DEBUG - /login at position 5 of 12 in additional filter chain; firing Filter: 'MyAuthenticationFilter' 
+DEBUG - Checking match of request : '/login'; against '/login' 
+DEBUG - Request is to process authentication 
+DEBUG - Authentication attempt using com.pvn.mvctiles.authentication.AdminCustomAuthenticationProvider 
+TRACE - Returning cached instance of singleton bean 'delegatingApplicationListener' 
+DEBUG - Authentication success. Updating SecurityContextHolder to contain: com.pvn.mvctiles.authentication.UserUsernamePasswordAuthenticationToken@452579c9: Principal: admin; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN 
+TRACE - Returning cached instance of singleton bean 'delegatingApplicationListener' 
+TRACE - session created 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@53c47afe 
+DEBUG - SecurityContext 'org.springframework.security.core.context.SecurityContextImpl@452579c9: Authentication: com.pvn.mvctiles.authentication.UserUsernamePasswordAuthenticationToken@452579c9: Principal: admin; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' stored to HttpSession: 'org.apache.catalina.session.StandardSessionFacade@47179eeb 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 

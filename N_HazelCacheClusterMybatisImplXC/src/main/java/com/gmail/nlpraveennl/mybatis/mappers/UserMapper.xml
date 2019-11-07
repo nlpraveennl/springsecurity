@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+	<select id="getAllKeys" resultType="int">
+		SELECT id FROM UserDetails
+	</select>
+	
+	<select id="getUsers" parameterType="java.util.Map" resultType="com.gmail.nlpraveennl.vo.UserVO">
+		SELECT ud.id, ud.firstName, ud.lastName, ud.userName, ud.email, ud.gender, ud.enabled, rm.id as roleId, rm.name as roleStr 
+		FROM UserDetails ud 
+		INNER JOIN User_Role_Mapping map ON map.userId =  ud.id 
+		INNER JOIN RoleMaster rm ON map.roleId = rm.id 
+		WHERE ud.id IN 
+		<foreach item="item" index="index" collection="keys"
+	        open="(" separator="," close=")">
+	          #{item}
+	    </foreach>
+	    ORDER BY ud.id
+	</select>
+</mapper>

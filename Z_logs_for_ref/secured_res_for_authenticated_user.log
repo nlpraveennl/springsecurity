@@ -1,0 +1,166 @@
+DEBUG - /app/user/dashboard at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /app/user/dashboard at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - Obtained a valid SecurityContext from SPRING_SECURITY_CONTEXT: 'org.springframework.security.core.context.SecurityContextImpl@452579c9: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /app/user/dashboard at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /app/user/dashboard at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+PUT and DELETE
+DEBUG - No matches found 
+DEBUG - /app/user/dashboard at position 5 of 12 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter' 
+DEBUG - Request 'GET /app/user/dashboard' doesn't match 'POST /login' 
+DEBUG - /app/user/dashboard at position 6 of 12 in additional filter chain; firing Filter: 'ConcurrentSessionFilter' 
+DEBUG - /app/user/dashboard at position 7 of 12 in additional filter chain; firing Filter: 'RequestCacheAwareFilter' 
+DEBUG - saved request doesn't match 
+DEBUG - /app/user/dashboard at position 8 of 12 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter' 
+DEBUG - /app/user/dashboard at position 9 of 12 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter' 
+DEBUG - SecurityContextHolder not populated with anonymous token, as it already contained: 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /app/user/dashboard at position 10 of 12 in additional filter chain; firing Filter: 'SessionManagementFilter' 
+DEBUG - /app/user/dashboard at position 11 of 12 in additional filter chain; firing Filter: 'ExceptionTranslationFilter' 
+DEBUG - /app/user/dashboard at position 12 of 12 in additional filter chain; firing Filter: 'FilterSecurityInterceptor' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/resources/**' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/login' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/api/**' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/app/admin/app-config' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/app/admin/**' 
+DEBUG - Checking match of request : '/app/user/dashboard'; against '/app/user/**' 
+DEBUG - Secure object: FilterInvocation: URL: /app/user/dashboard; Attributes: [hasAnyRole('ROLE_ADMIN','ROLE_USER')] 
+DEBUG - Previously Authenticated: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN 
+DEBUG - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@7efc4f04, returned: 1 
+DEBUG - Authorization successful 
+DEBUG - RunAsManager did not change Authentication object 
+DEBUG - /app/user/dashboard reached end of additional filter chain; proceeding with original chain 
+TRACE - GET "/inmemory-auth-and-jdbc-auth-jc/app/user/dashboard", parameters={}, headers={masked} in DispatcherServlet 'dispatcher' 
+TRACE - Returning cached instance of singleton bean 'authenticationController' 
+TRACE - Mapped to public java.lang.String com.pvn.mvctiles.controller.AuthenticationController.showDashboard(org.springframework.ui.Model,javax.servlet.http.HttpServletRequest) 
+TRACE - Arguments: [{}, SecurityContextHolderAwareRequestWrapper[ org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterRequest@35e3a45e]] 
+TRACE - View with key [dashboard] served from cache 
+TRACE - Rendering view [org.springframework.web.servlet.view.JstlView: name 'dashboard'; URL [/WEB-INF/jsp/dashboard.jsp]]  
+DEBUG - View name 'dashboard', model {loggedInUser=com.pvn.mvctiles.model.UserDetails@3b244c92, org.springframework.validation.BindingResult.loggedInUser=org.springframework.validation.BeanPropertyBindingResult: 0 errors} 
+TRACE - Returning cached instance of singleton bean 'requestDataValueProcessor' 
+DEBUG - Forwarding to [/WEB-INF/jsp/dashboard.jsp] 
+TRACE - Returning cached instance of singleton bean 'requestDataValueProcessor' 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@7771517d 
+DEBUG - Completed 200 OK, headers={masked} 
+DEBUG - Chain processed normally 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 
+TRACE - Last access time update filter :: org.apache.catalina.session.StandardSessionFacade@49383057 :: http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/resources/css/app.css 
+DEBUG - /resources/css/app.css at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /resources/css/app.css at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - Obtained a valid SecurityContext from SPRING_SECURITY_CONTEXT: 'org.springframework.security.core.context.SecurityContextImpl@452579c9: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/css/app.css at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /resources/css/app.css at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+DEBUG - Checking match of request : '/resources/css/app.css'; against '/logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', POST] 
+DEBUG - Request 'GET /resources/css/app.css' doesn't match 'POST /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', PUT] 
+DEBUG - Request 'GET /resources/css/app.css' doesn't match 'PUT /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', DELETE] 
+DEBUG - Request 'GET /resources/css/app.css' doesn't match 'DELETE /logout' 
+DEBUG - No matches found 
+DEBUG - /resources/css/app.css at position 5 of 12 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter' 
+DEBUG - Request 'GET /resources/css/app.css' doesn't match 'POST /login' 
+DEBUG - /resources/css/app.css at position 6 of 12 in additional filter chain; firing Filter: 'ConcurrentSessionFilter' 
+DEBUG - /resources/css/app.css at position 7 of 12 in additional filter chain; firing Filter: 'RequestCacheAwareFilter' 
+DEBUG - saved request doesn't match 
+DEBUG - /resources/css/app.css at position 8 of 12 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter' 
+DEBUG - /resources/css/app.css at position 9 of 12 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter' 
+DEBUG - SecurityContextHolder not populated with anonymous token, as it already contained: 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/css/app.css at position 10 of 12 in additional filter chain; firing Filter: 'SessionManagementFilter' 
+DEBUG - /resources/css/app.css at position 11 of 12 in additional filter chain; firing Filter: 'ExceptionTranslationFilter' 
+DEBUG - /resources/css/app.css at position 12 of 12 in additional filter chain; firing Filter: 'FilterSecurityInterceptor' 
+DEBUG - Checking match of request : '/resources/css/app.css'; against '/resources/**' 
+DEBUG - Secure object: FilterInvocation: URL: /resources/css/app.css; Attributes: [permitAll] 
+DEBUG - Previously Authenticated: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN 
+DEBUG - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@7efc4f04, returned: 1 
+DEBUG - Authorization successful 
+DEBUG - RunAsManager did not change Authentication object 
+DEBUG - /resources/css/app.css reached end of additional filter chain; proceeding with original chain 
+TRACE - GET "/inmemory-auth-and-jdbc-auth-jc/resources/css/app.css", parameters={}, headers={masked} in DispatcherServlet 'dispatcher' 
+TRACE - Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler ["/resources/"]] and 3 interceptors 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@7771517d 
+TRACE - No view rendering, null ModelAndView returned. 
+DEBUG - Completed 200 OK, headers={masked} 
+DEBUG - Chain processed normally 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 
+TRACE - Last access time update filter :: org.apache.catalina.session.StandardSessionFacade@49383057 :: http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/resources/js/bootstrap.bundle.min.js 
+TRACE - Last access time update filter :: org.apache.catalina.session.StandardSessionFacade@49383057 :: http://localhost:8080/inmemory-auth-and-jdbc-auth-jc/resources/js/jquery-3.4.1.js 
+DEBUG - /resources/js/jquery-3.4.1.js at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - Obtained a valid SecurityContext from SPRING_SECURITY_CONTEXT: 'org.springframework.security.core.context.SecurityContextImpl@452579c9: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+DEBUG - Checking match of request : '/resources/js/jquery-3.4.1.js'; against '/logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', POST] 
+DEBUG - Request 'GET /resources/js/jquery-3.4.1.js' doesn't match 'POST /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', PUT] 
+DEBUG - Request 'GET /resources/js/jquery-3.4.1.js' doesn't match 'PUT /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', DELETE] 
+DEBUG - Request 'GET /resources/js/jquery-3.4.1.js' doesn't match 'DELETE /logout' 
+DEBUG - No matches found 
+DEBUG - /resources/js/jquery-3.4.1.js at position 5 of 12 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter' 
+DEBUG - Request 'GET /resources/js/jquery-3.4.1.js' doesn't match 'POST /login' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 6 of 12 in additional filter chain; firing Filter: 'ConcurrentSessionFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 7 of 12 in additional filter chain; firing Filter: 'RequestCacheAwareFilter' 
+DEBUG - saved request doesn't match 
+DEBUG - /resources/js/jquery-3.4.1.js at position 8 of 12 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 9 of 12 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 1 of 12 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter' 
+DEBUG - SecurityContextHolder not populated with anonymous token, as it already contained: 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 2 of 12 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 10 of 12 in additional filter chain; firing Filter: 'SessionManagementFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 11 of 12 in additional filter chain; firing Filter: 'ExceptionTranslationFilter' 
+DEBUG - /resources/js/jquery-3.4.1.js at position 12 of 12 in additional filter chain; firing Filter: 'FilterSecurityInterceptor' 
+DEBUG - Checking match of request : '/resources/js/jquery-3.4.1.js'; against '/resources/**' 
+DEBUG - Secure object: FilterInvocation: URL: /resources/js/jquery-3.4.1.js; Attributes: [permitAll] 
+DEBUG - Previously Authenticated: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN 
+DEBUG - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@7efc4f04, returned: 1 
+DEBUG - Authorization successful 
+DEBUG - RunAsManager did not change Authentication object 
+DEBUG - /resources/js/jquery-3.4.1.js reached end of additional filter chain; proceeding with original chain 
+TRACE - GET "/inmemory-auth-and-jdbc-auth-jc/resources/js/jquery-3.4.1.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcher' 
+DEBUG - Obtained a valid SecurityContext from SPRING_SECURITY_CONTEXT: 'org.springframework.security.core.context.SecurityContextImpl@452579c9: Authentication: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 3 of 12 in additional filter chain; firing Filter: 'HeaderWriterFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 4 of 12 in additional filter chain; firing Filter: 'LogoutFilter' 
+DEBUG - Trying to match using Ant [pattern='/logout', GET] 
+DEBUG - Checking match of request : '/resources/js/bootstrap.bundle.min.js'; against '/logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', POST] 
+DEBUG - Request 'GET /resources/js/bootstrap.bundle.min.js' doesn't match 'POST /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', PUT] 
+DEBUG - Request 'GET /resources/js/bootstrap.bundle.min.js' doesn't match 'PUT /logout' 
+DEBUG - Trying to match using Ant [pattern='/logout', DELETE] 
+DEBUG - Request 'GET /resources/js/bootstrap.bundle.min.js' doesn't match 'DELETE /logout' 
+DEBUG - No matches found 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 5 of 12 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter' 
+DEBUG - Request 'GET /resources/js/bootstrap.bundle.min.js' doesn't match 'POST /login' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 6 of 12 in additional filter chain; firing Filter: 'ConcurrentSessionFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 7 of 12 in additional filter chain; firing Filter: 'RequestCacheAwareFilter' 
+DEBUG - saved request doesn't match 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 8 of 12 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 9 of 12 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter' 
+TRACE - Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler ["/resources/"]] and 3 interceptors 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@7771517d 
+DEBUG - SecurityContextHolder not populated with anonymous token, as it already contained: 'org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 10 of 12 in additional filter chain; firing Filter: 'SessionManagementFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 11 of 12 in additional filter chain; firing Filter: 'ExceptionTranslationFilter' 
+DEBUG - /resources/js/bootstrap.bundle.min.js at position 12 of 12 in additional filter chain; firing Filter: 'FilterSecurityInterceptor' 
+DEBUG - Checking match of request : '/resources/js/bootstrap.bundle.min.js'; against '/resources/**' 
+DEBUG - Secure object: FilterInvocation: URL: /resources/js/bootstrap.bundle.min.js; Attributes: [permitAll] 
+DEBUG - Previously Authenticated: org.springframework.security.authentication.UsernamePasswordAuthenticationToken@452579c9: Principal: org.springframework.security.core.userdetails.User@586034f: Username: admin; Password: [PROTECTED]; Enabled: true; AccountNonExpired: true; credentialsNonExpired: true; AccountNonLocked: true; Granted Authorities: ROLE_ADMIN; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@b364: RemoteIpAddress: 0:0:0:0:0:0:0:1; SessionId: null; Granted Authorities: ROLE_ADMIN 
+DEBUG - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@7efc4f04, returned: 1 
+DEBUG - Authorization successful 
+DEBUG - RunAsManager did not change Authentication object 
+DEBUG - /resources/js/bootstrap.bundle.min.js reached end of additional filter chain; proceeding with original chain 
+TRACE - GET "/inmemory-auth-and-jdbc-auth-jc/resources/js/bootstrap.bundle.min.js", parameters={}, headers={masked} in DispatcherServlet 'dispatcher' 
+TRACE - Mapped to HandlerExecutionChain with [ResourceHttpRequestHandler ["/resources/"]] and 3 interceptors 
+DEBUG - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@7771517d 
+TRACE - No view rendering, null ModelAndView returned. 
+DEBUG - Completed 200 OK, headers={masked} 
+DEBUG - Chain processed normally 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 
+TRACE - No view rendering, null ModelAndView returned. 
+DEBUG - Completed 200 OK, headers={masked} 
+DEBUG - Chain processed normally 
+DEBUG - SecurityContextHolder now cleared, as request processing completed 
