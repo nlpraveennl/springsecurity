@@ -3,6 +3,7 @@ package com.gmail.nlpraveennl.configuration;
 import java.io.Serializable;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 @Component("permissionEvaluator")
@@ -18,10 +19,17 @@ public class PermissionEvaluator implements org.springframework.security.access.
      * @return true if the permission is granted, false otherwise
      */
     @Override
-    public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
-        if (authentication != null && permission instanceof String) {
-//            User loggedUser = (User) authentication.getPrincipal();
-//            String permissionToCheck = (String) permission;
+    public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) 
+    {
+    	System.out.println("auth name:"+authentication.getName());
+    	System.out.println("auth roles:"+authentication.getAuthorities());
+    	System.out.println("targetDomainObject"+ targetDomainObject);
+    	System.out.println("permission"+permission);
+        if (authentication != null && permission instanceof String) 
+        {
+            User loggedUser = (User) authentication.getPrincipal();
+            System.out.println(loggedUser.getUsername());
+            String permissionToCheck = (String) permission;
         }
         return true;
     }

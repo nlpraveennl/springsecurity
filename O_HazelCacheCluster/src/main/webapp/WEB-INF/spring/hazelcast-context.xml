@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:hz="http://www.hazelcast.com/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.hazelcast.com/schema/spring
+        http://www.hazelcast.com/schema/spring/hazelcast-spring.xsd">
+
+	
+	<hz:hazelcast id="hazelcastInstance">
+		<hz:config>
+	        <hz:group name="dev" password="password"/>
+	        <hz:network port="5701" port-auto-increment="false">
+	            <hz:join>
+	            	<hz:multicast enabled="false"
+	                    multicast-group="224.2.2.3"
+	                    multicast-port="54327"/>
+	                <hz:tcp-ip enabled="true">
+	                    <hz:members>127.0.0.1</hz:members>
+	                </hz:tcp-ip>
+	            </hz:join>
+	        </hz:network>
+	            
+	        <hz:map name="ROLE_CACHE_MAP">
+                <hz:map-store write-delay-seconds="0" implementation="roleCacheMapStore"
+                              enabled="true" initial-mode="EAGER"/>
+            </hz:map>
+            
+            <hz:map name="USER_CACHE_MAP">
+                <hz:map-store write-delay-seconds="0" implementation="userCacheMapStore"
+                              enabled="true" initial-mode="EAGER"/>
+            </hz:map>
+            
+            <hz:map name="PROJECT_CACHE_MAP">                  
+                <hz:map-store write-delay-seconds="0" implementation="projectCacheMapStore"
+                              enabled="true" initial-mode="EAGER"/>
+            </hz:map>
+            
+            <hz:map name="ISSUE_CACHE_MAP">
+                <hz:map-store write-delay-seconds="0" implementation="issueCacheMapStore"
+                              enabled="true" initial-mode="EAGER"/>
+            </hz:map>
+	    </hz:config>
+	</hz:hazelcast>
+
+	<bean id="roleCacheMapStore" class="com.gmail.nlpraveennl.cache.store.HazelcastRoleEntityStore" />		
+	<bean id="userCacheMapStore" class="com.gmail.nlpraveennl.cache.store.HazelcastUserEntityStore" />
+	<bean id="projectCacheMapStore" class="com.gmail.nlpraveennl.cache.store.HazelcastProjectEntityStore" />
+	<bean id="issueCacheMapStore" class="com.gmail.nlpraveennl.cache.store.HazelcastIssueEntityStore" />
+	
+</beans>

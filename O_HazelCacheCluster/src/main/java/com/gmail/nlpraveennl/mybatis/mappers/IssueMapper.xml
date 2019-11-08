@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="IssueMapper">
+	<select id="getAllKeys" resultType="java.lang.Integer">
+		SELECT id FROM Project
+	</select>
+	
+	<select id="getIssues" parameterType="java.util.Map" resultType="com.gmail.nlpraveennl.cache.entity.IssueEntity">
+		SELECT * FROM Issue i WHERE i.id IN 
+		<foreach item="item" index="index" collection="keys"
+	        open="(" separator="," close=")">
+	          #{item}
+	    </foreach>
+	    ORDER BY i.id
+	</select>
+</mapper>
