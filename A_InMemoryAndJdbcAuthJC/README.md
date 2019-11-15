@@ -44,3 +44,30 @@ public void configureAuthentication(AuthenticationManagerBuilder auth) throws Ex
           "select ud.username as username, rm.name as role from userdetails ud INNER JOIN rolemaster rm ON rm.id = ud.roleId  where username = ?");
 }
 ```
+
+### Some Points
+```java
+@Configuration
+@EnableWebSecurity
+@PropertySource(value = { "classpath:databaseconnection.properties" })
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
+{
+	
+	@Autowired
+  private Environment environment;
+  
+  ...
+  
+  @Bean
+	public DataSource dataSource()
+	{
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName(environment.getRequiredProperty("driver"));
+		dataSource.setUrl(environment.getRequiredProperty("url"));
+		dataSource.setUsername(environment.getRequiredProperty("db.username"));
+		dataSource.setPassword(environment.getRequiredProperty("password"));
+		
+		return dataSource;
+	}
+}
+```
