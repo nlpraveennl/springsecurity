@@ -54,11 +54,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 {
 	
 	@Autowired
-  private Environment environment;
+  	private Environment environment;
   
-  ...
+  	...
   
-  @Bean
+ 	@Bean
 	public DataSource dataSource()
 	{
 		BasicDataSource dataSource = new BasicDataSource();
