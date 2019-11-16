@@ -23,11 +23,12 @@ What is the most common way to authenticate a modern web app?](https://stackover
 
 6. [When do we need multiple dispatcher servlets](https://stackoverflow.com/a/58159761/2825798)
 
-7. [X509 and JWT](https://stackoverflow.com/a/57927378/2825798)
+7. [Setting up security for both web application and Rest API](https://stackoverflow.com/a/58894899/2825798)
 
-8. [how to ignore spring security CSRF for specific URL's in spring project](https://stackoverflow.com/a/58470795/2825798)
+8. [X509 and JWT](https://stackoverflow.com/a/57927378/2825798)
 
-9. [Why we should make login page as unrestricted resource?](https://stackoverflow.com/a/58354296/2825798)
+9. [how to ignore spring security CSRF for specific URL's in spring project](https://stackoverflow.com/a/58470795/2825798)
 
-10. [Spring MVC - content-type aware response from filter](https://stackoverflow.com/a/57676746/2825798)
+10. [Why we should make login page as unrestricted resource?](https://stackoverflow.com/a/58354296/2825798)
 
+11. [Spring MVC - content-type aware response from filter](https://stackoverflow.com/a/57676746/2825798)
