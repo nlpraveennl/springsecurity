@@ -34,17 +34,17 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter
 		if (header != null && header.startsWith("Bearer ")) 
 		{
 			String authToken = header.substring(7);
-			System.out.println(authToken);
-			
+
 			try
 			{
 				String username = jwtTokenUtil.getUsernameFromToken(authToken);
 				if (username != null)
 				{
-					// here username should be validated with database and get authorities from database if valid
-					// Say just to hard code
 					if (jwtTokenUtil.validateToken(authToken, username))
 					{
+						// here username should be validated with database and get authorities from database if valid
+						// Say just to hard code
+						
 						List<GrantedAuthority> authList = new ArrayList<>();
 						authList.add(new SimpleGrantedAuthority("ROLE_APIUSER"));
 						
@@ -55,6 +55,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter
 					}
 					else
 					{
+						System.out.println("Token has been expired");
 						response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 						return;
 					}
