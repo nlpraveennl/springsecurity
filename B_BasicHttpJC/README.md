@@ -24,5 +24,5 @@ if Authorization header not present it will prompt for username and password as 
 In basic http authentication there is no concept of logout. Logout can be achieved manually by closing the browser.
 If we need to automate logout by code, it can be done by forcing server to send 401(Un Authorized) status and overriting Authorization header with wrong credetials.
 
-For more details, go through code and also https://stackoverflow.com/questions/233507/how-to-log-out-user-from-web-site-using-basic-authentication
+For more details, go through code and also [how-to-log-out-user-from-web-site-using-basic-authentication](https://stackoverflow.com/q/233507/2825798)
 
