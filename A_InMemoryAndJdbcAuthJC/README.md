@@ -45,7 +45,8 @@ public void configureAuthentication(AuthenticationManagerBuilder auth) throws Ex
 }
 ```
 
-### Some Points
+### Some Points for my referance 
+Configuring Environment from .properties file present in classpath
 ```java
 @Configuration
 @EnableWebSecurity
