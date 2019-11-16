@@ -23,7 +23,8 @@ In your ```spring-security.xml```
 
 <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 ```
-### Some points
+### Some points for my referance
+Configuring `PropertyPlaceholderConfigurer`
 ```xml
 <beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <beans:property name="locations" value="classpath:databaseconnection.properties" />
