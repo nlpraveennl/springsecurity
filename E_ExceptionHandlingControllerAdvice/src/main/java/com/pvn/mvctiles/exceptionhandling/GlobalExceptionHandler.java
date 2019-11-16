@@ -8,25 +8,32 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler
 {
+	
+//	@ExceptionHandler(NoHandlerFoundException.class)
+//	public @ResponseBody String handlerNotFoundError(Exception ex)
+//	{
+//		return "Messsage: No Handlers Found";
+//	}
+
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public String handlerNotFoundError(Exception ex)
 	{
 		return "404";
 	}
-	
+
 	@ExceptionHandler(RuntimeException.class)
-    public ModelAndView handle(RuntimeException ex)
+	public ModelAndView handle(RuntimeException ex)
 	{
-        ModelAndView model = new ModelAndView("runtime-exception");
-        model.addObject("exception", ex);
-        return model;
-    }
-	
+		ModelAndView model = new ModelAndView("runtime-exception");
+		model.addObject("exception", ex);
+		return model;
+	}
+
 	@ExceptionHandler(Exception.class)
-    public ModelAndView handle(Exception ex)
+	public ModelAndView handle(Exception ex)
 	{
-        ModelAndView model = new ModelAndView("exception");
-        model.addObject("exception", ex);
-        return model;
-    }
+		ModelAndView model = new ModelAndView("exception");
+		model.addObject("exception", ex);
+		return model;
+	}
 }

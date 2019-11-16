@@ -71,7 +71,7 @@ public class SpringSecurityConfig
     		    .antMatchers("/**").hasRole("ADMIN")
     	    .and().formLogin();
             
-            http.sessionManagement().maximumSessions(1).expiredUrl("/customlogin?expired=true");
+            http.sessionManagement().maximumSessions(1).expiredUrl("/login?expired=true");
         }
     }
 }
