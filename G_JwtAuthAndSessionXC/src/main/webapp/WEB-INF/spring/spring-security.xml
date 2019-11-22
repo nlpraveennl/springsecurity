@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"  
+    xmlns:beans="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://www.springframework.org/schema/security  
+    http://www.springframework.org/schema/security/spring-security.xsd">
+    
+    <beans:bean id="jwtTokenUtil" class="com.gmail.nlpraveennl.util.JwtTokenUtil" />
+
+	<beans:bean id="jwtauthFilter" class="com.gmail.nlpraveennl.configuration.JwtAuthenticationTokenFilter">
+		<beans:property name="jwtTokenUtil" ref="jwtTokenUtil" />
+	</beans:bean>
+	
+	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<http auto-config="true" use-expressions="true" create-session="ifRequired" pattern="/**">
+		<csrf disabled="true"/>
+		
+		<intercept-url pattern="/resources/**" access="permitAll" />
+		<intercept-url pattern="/api/authenticate" access="permitAll" />
+		<intercept-url pattern="/api/**" access="hasAnyRole('ROLE_APIUSER', 'ROLE_ADMIN')" />
+		
+		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+		<form-login/>
+		
+		<custom-filter ref="jwtauthFilter" before="FORM_LOGIN_FILTER"/>
+		
+		<session-management invalid-session-url="/login?expired=true">
+			<concurrency-control max-sessions="1" />
+		</session-management>
+	</http>
+	
+
+	<authentication-manager>
+	    <authentication-provider>
+	        <user-service>
+	            <user name="admin" password="$2a$10$ClYm7oqYe6xqlpBSLgpN/OELpafLrlbb1EcjWKZwrm3.KCtVQX6RO" authorities="ROLE_ADMIN" />
+	            <user name="apiuser" password="$2a$10$mNmXkYVrxCzvrh.8Xf91m.YprszBnTHH2P7lMs1yDOoU2dB/TXKCC" authorities="ROLE_APIUSER" />
+	        </user-service>
+	    </authentication-provider>
+	</authentication-manager>
+</beans:beans>

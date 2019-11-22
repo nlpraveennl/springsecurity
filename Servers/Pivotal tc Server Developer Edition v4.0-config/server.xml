@@ -16,7 +16,7 @@
             </Realm>
             <Host appBase="webapps" autoDeploy="true" deployOnStartup="true" deployXML="true" name="localhost" unpackWARs="true">
                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
-            <Context docBase="G_JwtAuthAndSessionJC" path="/jwtauth-session" reloadable="true" source="org.eclipse.jst.jee.server:G_JwtAuthAndSessionJC"/><Context docBase="G_JwtJC" path="/jwt" reloadable="true" source="org.eclipse.jst.jee.server:G_JwtJC"/></Host>
+            <Context docBase="G_JwtAuthAndSessionXC" path="/jwtauth-session-xmlconfig" reloadable="true" source="org.eclipse.jst.jee.server:G_JwtAuthAndSessionXC"/></Host>
         </Engine>
         <Connector acceptCount="100" connectionTimeout="20000" executor="tomcatThreadPool" maxKeepAliveRequests="15" port="${nio.http.port}" protocol="org.apache.coyote.http11.Http11NioProtocol" redirectPort="${nio.https.port}"/>
     </Service>

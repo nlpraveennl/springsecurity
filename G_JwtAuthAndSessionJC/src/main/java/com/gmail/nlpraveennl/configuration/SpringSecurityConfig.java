@@ -23,11 +23,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@Autowired
-	public void configureInMemoryAuthentication(AuthenticationManagerBuilder auth) throws Exception
-	{
-		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin@123#")).roles("ADMIN");
-	}
+	@Bean
+    public PasswordEncoder passwordEncoder() 
+    {
+        return new BCryptPasswordEncoder();
+    }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
@@ -47,9 +47,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
         http.sessionManagement().maximumSessions(1).expiredUrl("/login?expired=true");
     }
 	
-	@Bean
-    public PasswordEncoder passwordEncoder() 
-    {
-        return new BCryptPasswordEncoder();
-    }
+	@Autowired
+	public void configureInMemoryAuthentication(AuthenticationManagerBuilder auth) throws Exception
+	{
+		auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder.encode("admin@123#")).roles("ADMIN");
+		auth.inMemoryAuthentication().withUser("apiuser").password(passwordEncoder.encode("apiuser@123#")).roles("APIUSER");
+	}
 }
