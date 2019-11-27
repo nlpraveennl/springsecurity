@@ -1,7 +1,9 @@
 package com.pvn.mvctiles.configuration;
 
+import java.util.Arrays;
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,9 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan(basePackages = "com.pvn.mvctiles")
 public class ServletConfiguration implements WebMvcConfigurer
 {
+	@Autowired
+	LoggerIntercepter logInterceptor;
+	
 	@Bean
 	public TilesConfigurer tilesConfigurer()
 	{
@@ -95,6 +100,8 @@ public class ServletConfiguration implements WebMvcConfigurer
 		ThemeChangeInterceptor themeInterceptor = new ThemeChangeInterceptor();
 		themeInterceptor.setParamName("mytheme");
 		registry.addInterceptor(themeInterceptor);
+		
+		registry.addInterceptor(logInterceptor).addPathPatterns(Arrays.asList("/","/app/**", "/config/**"));
 	}
 	
 	

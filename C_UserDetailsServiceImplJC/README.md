@@ -1,3 +1,10 @@
+It has spring mvc Interceptor implementation. Where interceptor has been defined and added to Interceptor registry.
+
+- preHandle, postHandle, afterCompletion
+- `registry.addInterceptor(logInterceptor).addPathPatterns()`
+ 
+
+
 Implement UserDetailService and Override loadUserByUsername method
 
 ```java

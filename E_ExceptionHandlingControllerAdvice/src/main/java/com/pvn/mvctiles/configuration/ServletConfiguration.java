@@ -1,7 +1,5 @@
 package com.pvn.mvctiles.configuration;
 
-import java.util.Properties;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
@@ -96,16 +93,36 @@ public class ServletConfiguration implements WebMvcConfigurer
 		themeInterceptor.setParamName("mytheme");
 		registry.addInterceptor(themeInterceptor);
 	}
+
+	/**
+	 * Comment @ControllerAdvice in GlobalExceptionHandler and 
+	 * Uncomment below method
+	 */
+//	@Bean
+//	public HandlerExceptionResolver exceptionResolver()
+//	{
+//		SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+//		Properties exceptions = new Properties();
+//		exceptions.put(ArithmeticException.class.getName(), "runtime-exception");
+//		exceptions.put(NullPointerException.class.getName(), "runtime-exception");
+//		exceptions.put(Exception.class.getName(), "exception");
+//		resolver.setExceptionMappings(exceptions);
+//		return resolver;
+//	}
 	
-	@Bean
-	public SimpleMappingExceptionResolver exceptionResolver()
-	{
-		SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
-		Properties exceptions = new Properties();
-		exceptions.put(ArithmeticException.class, "runtime-exception");
-		exceptions.put(NullPointerException.class, "runtime-exception");
-		exceptions.put(Exception.class, "exception");
-		resolver.setExceptionMappings(exceptions);
-		return resolver;
-	}
+	/**
+	 * Comment @ControllerAdvice in GlobalExceptionHandler and 
+	 * Uncomment below method
+	 */
+//	@Override
+//	public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers)
+//	{
+//		WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
+//		
+//		SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+//		Properties exceptions = new Properties();
+//		exceptions.put(NullPointerException.class.getName(), "runtime-exception");
+//		resolver.setExceptionMappings(exceptions);
+//		resolvers.add(resolver);
+//	}
 }
