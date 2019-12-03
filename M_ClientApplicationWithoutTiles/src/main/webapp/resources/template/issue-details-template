@@ -1,0 +1,40 @@
+<tr>
+	<th><spring:message code="app.issue.name.label"/></th>
+	<td><form:input path="name"/></td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.summary.label"/></th>
+	<td><form:input path="summary"/></td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.description.label"/></th>
+	<td><form:input path="description"/></td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.issuetype.label"/></th>
+	<td><form:input path="issueType"/></td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.reporter.label"/></th>
+	<td>
+		<form:select path="reporter" multiple="false">
+		    <form:options items="${users}" itemValue="id" itemLabel="userName"/>
+		</form:select>
+	</td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.assignee.label"/></th>
+	<td>
+    	<form:select path="assignee" multiple="false">
+		    <form:options items="${users}" itemValue="id" itemLabel="userName"/>
+		</form:select>
+	</td>
+</tr>
+<tr>
+	<th><spring:message code="app.issue.project.label"/></th>
+	<td>
+    	<form:select path="projectId" multiple="false">
+		    <form:options items="${projects}" itemValue="id" itemLabel="name"/>
+		</form:select>
+	</td>
+</tr>

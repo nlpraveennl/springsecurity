@@ -1,0 +1,40 @@
+<br>
+<span style="font-size:20px">
+	Users List
+<span style="float:right">
+	<a href="/angularjs/app/admin/user-details">
+		Add User
+	</a>
+</span>
+<hr>
+<table class="table" style="font-size:12px">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Gender</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  		<tr ng-repeat="x in usersList">
+	      <th>{{x.id }}</th>
+	      <td>{{x.firstName }}</td>
+	      <td>{{x.lastName }}</td>
+	      <td>{{x.email }}</td>
+	      <td>{{x.userName }}</td>
+	      <td>{{x.gender }}</td>
+	      <td>{{x.roleStr }}</td>
+	      <td>
+	      	<a href="/angularjs/app/user/userdetails/1" />">
+	      		Edit
+	      	</a>
+	      </td>
+	    </tr>
+  	</c:forEach>
+  </tbody>
+</table>

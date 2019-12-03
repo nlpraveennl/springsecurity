@@ -11,6 +11,10 @@ public class Test {
                 new Person("e3", "l2"),
                 new Person("e4", "l2")
         );
+        
+        persons.forEach(x -> {
+        	System.out.println(x);
+        });
 
         List<Employee> employees = persons.stream()
                 .filter(p -> p.getLastName().equals("l1"))
