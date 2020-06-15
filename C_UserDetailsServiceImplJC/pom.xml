@@ -10,7 +10,7 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>5.1.8.RELEASE</org.springframework-version>
-		<spring-security.version>5.1.5.RELEASE</spring-security.version>
+		<spring-security.version>5.3.3.RELEASE</spring-security.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 
 		<org.slf4j-version>1.6.6</org.slf4j-version>
