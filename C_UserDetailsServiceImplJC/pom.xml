@@ -27,7 +27,7 @@
 		<jsp-api-version>2.1</jsp-api-version>
 		<jstl-version>1.2</jstl-version>
 
-		<junit-version>4.7</junit-version>
+		<junit-version>4.13.1</junit-version>
 
 	</properties>
 	<dependencies>
